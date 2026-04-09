@@ -9,24 +9,19 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) throws Exception {
 
-        // --- Create Items ---
         Item laptop = new Item("Laptop", 2.5, 55000.0);
         Item mouse  = new Item("Wireless Mouse", 0.3, 800.0);
 
-        // --- Create Order Details ---
         OrderDetail od1 = new OrderDetail(1, "taxable", laptop);
         OrderDetail od2 = new OrderDetail(2, "taxable", mouse);
 
-        // --- Create Order ---
         Order order = new Order("Pending");
         order.addLineItem(od1);
         order.addLineItem(od2);
 
-        // --- Create Customer and attach order ---
         Customer customer = new Customer("Himanshu", "Vellore, TN");
         customer.addOrder(order);
 
-        // --- Build summary string ---
         StringBuilder sb = new StringBuilder();
         sb.append("=== Customer Management System ===\n");
         sb.append(customer).append("\n");
@@ -36,16 +31,13 @@ public class Main {
         sb.append(String.format("Total        : Rs. %.2f%n", order.calcTotal()));
         sb.append(String.format("Total Weight : %.2f kg%n", order.calcTotalWeight()));
 
-        // --- Payment: Cash ---
         Cash cash = new Cash(order.calcTotal(), 60000.0);
         sb.append("\n--- Payment ---\n");
         sb.append(cash.getPaymentInfo()).append("\n");
 
-        // --- Payment: Check ---
         Check chk = new Check(1000.0, "Himanshu", "VLD12345");
         sb.append(chk.getPaymentInfo()).append("\n");
 
-        // --- Payment: Credit ---
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, 2);
         Date futureDate = cal.getTime();
@@ -55,7 +47,7 @@ public class Main {
         String output = sb.toString();
         System.out.println(output);
 
-        // --- Start HTTP server so Render keeps the service alive ---
+        // THIS PART keeps Render alive
         int port = Integer.parseInt(System.getenv().getOrDefault("PORT", "8080"));
         HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
         server.createContext("/", exchange -> {
