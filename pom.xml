@@ -5,23 +5,20 @@
     
     <modelVersion>4.0.0</modelVersion>
     
-    <!-- Project Identity -->
     <groupId>vit.devops.macse639</groupId>
     <artifactId>CustomerManagementSystem</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
     
     <name>Customer Management System</name>
-    <description>DevOps Project - MACSE639 - VIT Chennai</description>
+    <description>DevOps Project - MACSE639 - VIT Vellore</description>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>17</maven.compiler.release>
-        <!-- Changed to Main.java as entry point -->
+        <maven.compiler.release>25</maven.compiler.release>
         <exec.mainClass>vit.devops.macse639.customermanagementsystem.Main</exec.mainClass>
     </properties>
     
-    <!-- JUnit for Q4 unit testing -->
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -33,24 +30,21 @@
     
     <build>
         <plugins>
-            <!-- Maven compiler plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <release>17</release>
+                    <release>25</release>
                 </configuration>
             </plugin>
             
-            <!-- Maven surefire - runs JUnit tests (Q4) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.1.2</version>
             </plugin>
             
-            <!-- Makes runnable JAR with Main class -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
